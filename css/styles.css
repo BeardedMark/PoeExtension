@@ -1,0 +1,51 @@
+.poe-container,
+.head-container,
+.trade-container{
+    max-width: 1520px;
+    margin: 16px auto 16px;
+    padding: 8px;
+}
+
+.head-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.trade-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 8px;
+    background: rgba(10, 10, 10, .8);
+}
+
+.row-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+/* Липкий поиск */
+.top-container {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    border-bottom: 1px solid #465260;
+}
+
+.lang-container{
+    position: relative !important;
+}
+
+.back-container{
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    padding: 0 !important;
+}
+
+.logo-container{
+    max-height: 36px;
+}

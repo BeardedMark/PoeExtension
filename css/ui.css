@@ -1,0 +1,102 @@
+/* Кнопки */
+.cp-btn,
+.cp-btn-accent,
+.cp-btn-prime,
+.cp-btn-danger,
+.cp-btn-warning,
+.cp-btn-success {
+    display: block;
+    padding: 5px 8px;
+    min-width: auto;
+    color: #e2e2e2;
+    background: #1e2124;
+    border: 1px solid #42484e;
+    border-radius: 0px;
+    transition: .3s;
+}
+
+.cp-btn:hover {
+    background: #343a3f;
+}
+
+.cp-btn-accent {
+    background: #5a3806;
+    border: 1px solid #8a5609;
+}
+
+.cp-btn-accent:hover {
+    background: #724708;
+}
+
+.cp-btn-prime {
+    background: #0f304d;
+    border: 1px solid #4c4c7d;
+}
+
+.cp-btn-prime:hover {
+    background: #194e7c;
+}
+
+.cp-btn-danger {
+    background: #d9534f;
+    border: 1px solid #e7908e;
+}
+
+.cp-btn-danger:hover {
+    background: #ff625d;
+}
+
+.cp-btn-warning {
+    background: #c45f00;
+    border: 1px solid #ff8512;
+}
+
+.cp-btn-warning:hover {
+    background: #eb7200;
+}
+
+.cp-btn-success {
+    background: #309630;
+    border: 1px solid #4dc64d;
+}
+
+.cp-btn-success:hover {
+    background: #3bb63b;
+}
+
+/* Ссылки и кнопки удаления */
+.link-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 5px 8px;
+    background: #1e2124;
+    gap: 3px;
+}
+
+.cp-icon,
+.cp-icon-opacity {
+    cursor: pointer;
+    height: 18px;
+    width: 18px;
+}
+
+.cp-icon-opacity {
+    opacity: .3;
+    transition: .3s;
+}
+
+.cp-icon-opacity:hover {
+    opacity: 1;
+}
+
+
+.cp-link {
+    text-decoration: none;
+    color: #a38b63;
+    transition: .3s;
+}
+
+.cp-link:hover {
+    color: #e9cf9f;
+    text-decoration: none;
+}
