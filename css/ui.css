@@ -13,6 +13,7 @@
     border: 1px solid #42484e;
     border-radius: 0px;
     transition: .3s;
+    cursor: pointer;
 }
 
 .cp-btn:hover {
@@ -75,6 +76,8 @@
 
 .cp-icon,
 .cp-icon-opacity {
+    background: none;
+    border: none;
     cursor: pointer;
     height: 18px;
     width: 18px;

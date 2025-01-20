@@ -10,24 +10,23 @@
         "64": "img/favicons/64.png",
         "128": "img/favicons/128.png"
     },
+    "action": {
+        "default_popup": "view/popup.html",
+        "default_icon": {
+            "16": "img/favicons/16.png",
+            "48": "img/favicons/48.png",
+            "128": "img/favicons/128.png"
+        }
+    },
     "permissions": [
         "scripting",
-        "storage"
+        "storage",
+        "tabs"
     ],
     "host_permissions": [
         "https://*.pathofexile.com/*"
     ],
     "content_scripts": [
-        {
-            "matches": [
-                "https://*.pathofexile.com/trade*"
-            ],
-            "js": [
-                "js/funcs.js",
-                "js/scripts.js"
-            ],
-            "run_at": "document_idle"
-        },
         {
             "matches": [
                 "<all_urls>"
@@ -36,7 +35,17 @@
                 "css/ui.css",
                 "css/styles.css"
             ],
-            "run_at": "document_end"
+            "run_at": "document_idle"
+        },
+        {
+            "matches": [
+                "https://*.pathofexile.com/trade*"
+            ],
+            "js": [
+                "js/bookmarks.js",
+                "js/statmarker.js"
+            ],
+            "run_at": "document_idle"
         }
     ],
     "web_accessible_resources": [
