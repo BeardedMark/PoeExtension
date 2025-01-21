@@ -3,7 +3,7 @@
 
 [Сайт](https://custompoe.ru) • [Форум](https://ru.pathofexile.com/forum/view-thread/3703253) • [Описание](#Описание) • [Сравнение](#Сравнение) • [Установка](#Установка) • [Галерея](#Галерея)
 
-| ![Preview](https://custompoe.ru/img/screens/tradePreview.png) |
+| ![Preview](https://custompoe.ru/img/screens/trade/tradePreview.png) |
 |-------------|
 
 ### Описание
@@ -14,7 +14,7 @@
     - Очистка сохраненных ссылок
     - Экспорт списка ссылок
     - Импорт списка ссылок
-2. Изменение внешнего вида страницы
+3. Изменение внешнего вида страницы
     - Компактная шапка сайта торговли
     - Фиксация поиска при прокрутке страницы
     - Подсветка искомых свойств на предметах
@@ -22,7 +22,7 @@
 ### Сравнение
 | Оригинал | Расширение |
 |-------------|-------------|
-| ![Before](https://custompoe.ru/img/screens/tradeBefore.png) | ![After](https://custompoe.ru/img/screens/tradeAfter.png) |
+| ![Before](https://custompoe.ru/img/screens/trade/tradeBefore.png) | ![After](https://custompoe.ru/img/screens/trade/tradeAfter.png) |
 
 ### Установка
 1. [Скачайте](https://github.com/BeardedMark/PoeExtension/archive/refs/heads/main.zip) или клонируйте репозиторий 
@@ -32,9 +32,9 @@
 4. Убедитесь что расширение включено
 
 ### Галерея
-| ![Bookmarks](https://custompoe.ru/img/screens/bookmarks.png) | ![Statmarker](https://custompoe.ru/img/screens/statmarker.png) |
+| ![Bookmarks](https://custompoe.ru/img/screens/trade/bookmarks.png) | ![Statmarker](https://custompoe.ru/img/screens/trade/statmarker.png) |
 |-------------|-------------|
-| ![FixedHeader](https://custompoe.ru/img/screens/fixedHeader.png) | ![Popup](https://custompoe.ru/img/screens/popup.png) |
+| ![FixedHeader](https://custompoe.ru/img/screens/trade/fixedHeader.png) | ![Popup](https://custompoe.ru/img/screens/trade/popup.png) |
 
 ---
 *Расширение не собирает и не использует ваши личные данные. Все изменения касаются исключительно внешнего вида и удобства работы с сайтом*
