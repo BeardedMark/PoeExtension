@@ -12,8 +12,7 @@ function getStats() {
             return span ? span.textContent.trim() : null;
         })
         .filter(text => text !== null);
-
-    console.log(stats);
+    ;
     return stats;
 }
 
@@ -24,6 +23,33 @@ window.addEventListener("load", () => {
                 observer.disconnect();
 
                 styleMatchingElements();
+
+                // Удаление обводки
+                document.querySelectorAll("button").forEach(element => {
+                    element.style.outline = "none";
+                    element.classList.add("button-focus");
+                });
+
+                // Замена кнопок
+                document.querySelectorAll(".direct-btn").forEach(element => {
+                    const img = document.createElement("img");
+                    img.src = "https://img.icons8.com/material/18/e9cf9f/sms--v1.png";
+                    img.width = 18;
+                    img.height = 18;
+                    
+                    element.innerHTML = "";
+                    element.appendChild(img);
+                });
+
+                document.querySelectorAll(".ignore-btn").forEach(element => {
+                    const img = document.createElement("img");
+                    img.src = "https://img.icons8.com/material/18/ec7676/cancel-2.png";
+                    img.width = 18;
+                    img.height = 18;
+                    
+                    element.innerHTML = "";
+                    element.appendChild(img);
+                });
 
                 observer.observe(document.body, { childList: true, subtree: true });
             });
@@ -40,7 +66,6 @@ function styleMatchingElements() {
 
     const container = document.querySelector(".content");
     if (!container) {
-        console.warn("Контейнер с классом '.content' не найден.");
         return;
     }
 
@@ -57,7 +82,7 @@ function styleMatchingElements() {
         const hasMatch = searchRegexes.some(regex => regex.test(spanText));
 
         if (hasMatch) {
-            span.style.color = "#bdbdbd";
+            span.style.color = "rgb(67, 165, 103)";
         }
     });
 }

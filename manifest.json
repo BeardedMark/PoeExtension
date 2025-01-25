@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "PoeExtension",
-    "version": "1.0",
+    "version": "1.2",
     "description": "Браузерное расширение для сайтов Path of Exile",
     "icons": {
         "16": "img/favicons/16.png",
@@ -24,12 +24,14 @@
         "tabs"
     ],
     "host_permissions": [
+        "https://pathofexile.com/*",
         "https://*.pathofexile.com/*"
     ],
     "content_scripts": [
         {
             "matches": [
-                "<all_urls>"
+                "https://pathofexile.com/*",
+                "https://*.pathofexile.com/*"
             ],
             "css": [
                 "css/ui.css",
@@ -42,6 +44,7 @@
                 "https://*.pathofexile.com/trade*"
             ],
             "js": [
+                "js/trade.js",
                 "js/bookmarks.js",
                 "js/statmarker.js"
             ],
@@ -50,11 +53,12 @@
     ],
     "web_accessible_resources": [
         {
-            "resources": [
-                "img/*"
-            ],
             "matches": [
                 "<all_urls>"
+            ],
+            "resources": [
+                "view/*",
+                "img/*"
             ]
         }
     ]

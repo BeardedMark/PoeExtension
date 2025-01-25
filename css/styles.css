@@ -1,24 +1,42 @@
-.poe-container,
-.head-container,
-.trade-container{
+/* Стилизация основного скроллбара */
+::-webkit-scrollbar {
+    width: 13px;
+    height: 13px;
+}
+
+/* Стилизация фона скроллбара */
+::-webkit-scrollbar-track {
+    background: black;
+}
+
+/* Стилизация ползунка скроллбара */
+::-webkit-scrollbar-thumb {
+    background: #1e2124;
+    border: 3px solid black;
+    cursor: pointer;
+}
+
+/* Ховер для ползунка */
+::-webkit-scrollbar-thumb:hover {
+    background: #634928;
+    /* Цвет ползунка при наведении */
+}
+
+
+.poe-container {
     max-width: 1520px;
     margin: 16px auto 16px;
     padding: 8px;
 }
 
-.head-container{
+.head-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 8px;
-}
-
-.trade-container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    gap: 8px;
-    background: rgba(10, 10, 10, .8);
+    max-width: 1520px;
+    margin: 12px auto 12px;
+    padding: 8px;
 }
 
 .row-container {
@@ -38,21 +56,229 @@
 .top-container {
     position: sticky;
     top: 0;
-    z-index: 1;
-    border-bottom: 1px solid #465260;
+    z-index: 999;
+    border-bottom: 1px solid #634928;
 }
 
-.lang-container{
+.lang-container {
     position: relative !important;
 }
 
-.back-container{
+.back-container {
     position: relative !important;
     top: 0 !important;
     left: 0 !important;
     padding: 0 !important;
 }
 
-.logo-container{
+.logo-container {
     max-height: 36px;
+}
+
+.trade-body {
+    display: flex;
+    height: fit-content;
+}
+
+.trade-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    max-width: 30vw;
+    height: 100vh;
+    max-height: 100vh;
+    resize: horizontal;
+    position: sticky;
+    top: 0;
+    /* background-color: black; */
+}
+
+/* .trade-container > *:nth-child(odd) {
+    background-color: rgba(20, 20, 20, .8);
+}
+
+.trade-container > *:nth-child(even) {
+    background-color: rgba(10, 10, 10, .8);
+} */
+
+.trade-container-header {
+    padding: 8px;
+}
+
+.trade-container-body {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+
+.trade-container-footer {
+    padding: 8px;
+}
+
+.bookmarks-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 5px;
+    padding: 16px 8px;
+    background-color: rgba(10, 10, 10, .9);
+    /* border-right: 1px solid #333; */
+}
+
+.bookmarks-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: end;
+    padding: 5px 8px;
+    gap: 5px;
+}
+.bookmarks-migrate {
+    display: flex;
+    gap: 5px;
+    flex-grow: 1;
+}
+.bookmarks-folders {
+    display: flex;
+    gap: 5px;
+}
+
+
+.bookmarks-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 8px;
+    background: rgba(45, 49, 54, .3);
+    gap: 3px;
+    transition: .5s;
+    border-left: 1px solid #634928;
+}
+.bookmarks-link:hover {
+    border-left: 1px solid #8a5609;
+    transition: .3s;
+}
+.bookmarks-link.active {
+    background: #1e2124;
+}
+
+.bm-folder-header {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    padding: 5px 8px;
+    gap: 3px;
+}
+
+.bm-folder-header:hover .bm-actions {
+    opacity: 1;
+}
+
+.bm-folder-header .bm-folder-name {
+    flex-grow: 1;
+    padding: 0;
+    margin: 0;
+}
+
+.bm-header {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.bm-header {
+    display: flex;
+    width: 100%;
+}
+
+
+
+.tree-view {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    height: 100%;
+    overflow-x: auto;
+}
+
+.tree-folder {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.tree-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.tree-item {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    padding: 5px 8px;
+    gap: 5px;
+}
+
+.tree-item:hover .tree-item-tools {
+    opacity: 1;
+    transition: .3s;
+}
+
+.tree-item:hover .tree-item-icon {
+    opacity: 1;
+    transition: .3s;
+}
+
+.tree-item:hover .tree-item-title {
+    color: #e9cf9f;
+    transition: .3s;
+}
+
+.tree-item-action {
+    display: flex;
+    gap: 2px;
+    opacity: 0;
+    transition: .5s;
+}
+
+.tree-item-title {
+    flex-grow: 1;
+    padding: 0;
+    margin: 0;
+    transition: .5s;
+    color: #a38b63;
+}
+
+.tree-item-icon {
+    opacity: .3;
+    transition: .5s;
+}
+
+.tree-item-tools {
+    display: flex;
+    gap: 2px;
+    opacity: 0;
+    transition: .5s;
+}
+
+.tree-item.dragging {
+    opacity: .3;
+}
+
+.tree-item.drag-over {
+    background-color: #1e2124;
+}
+
+.dragstart{
+    opacity: .3;
+}
+
+.dragover{
+    transition: none;
+    outline: 1px solid #e9cf9f;
+    outline-offset: -1px;
 }

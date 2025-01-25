@@ -66,21 +66,17 @@
 }
 
 /* Ссылки и кнопки удаления */
-.link-wrapper {
-    display: flex;
-    align-items: center;
-    padding: 5px 8px;
-    background: #1e2124;
-    gap: 3px;
-}
 
 .cp-icon,
 .cp-icon-opacity {
     background: none;
     border: none;
     cursor: pointer;
-    height: 18px;
-    width: 18px;
+    height: auto;
+    width: auto;
+    display: block;
+    padding: 0;
+    margin: 0;
 }
 
 .cp-icon-opacity {
