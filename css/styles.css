@@ -90,6 +90,8 @@
     resize: horizontal;
     position: sticky;
     top: 0;
+    z-index: 999;
+    overflow-y: visible;
     /* background-color: black; */
 }
 
@@ -107,7 +109,7 @@
 
 .trade-container-body {
     flex-grow: 1;
-    overflow-y: auto;
+    overflow-y: visible;
 }
 
 
@@ -120,8 +122,9 @@
     flex-direction: column;
     height: 100%;
     gap: 5px;
-    padding: 16px 8px;
+    padding: 34px 8px;
     background-color: rgba(10, 10, 10, .9);
+    overflow-y: visible;
     /* border-right: 1px solid #333; */
 }
 
@@ -199,7 +202,7 @@
     flex-direction: column;
     gap: 3px;
     height: 100%;
-    overflow-x: auto;
+    overflow-y: visible;
 }
 
 .tree-folder {
@@ -282,3 +285,4 @@
     outline: 1px solid #e9cf9f;
     outline-offset: -1px;
 }
+

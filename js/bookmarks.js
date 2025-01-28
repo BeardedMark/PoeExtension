@@ -43,6 +43,37 @@ function updateButtons() {
 
     const expandFolders = document.querySelector("#folder-expand");
     if (expandFolders) expandFolders.addEventListener("click", handleExpandFolders);
+
+}
+
+function setTooltips(){
+    const elementsWithTooltip = document.querySelectorAll("[data-tooltip]");
+
+    elementsWithTooltip.forEach(element => {
+        // Создаем элемент для тултипа
+        const tooltip = document.createElement("div");
+        tooltip.className = "custom-tooltip";
+        tooltip.textContent = element.getAttribute("data-tooltip");
+        document.body.appendChild(tooltip);
+
+        // Показываем тултип при наведении
+        element.addEventListener("mouseenter", (e) => {
+            tooltip.style.display = "block";
+            tooltip.style.left = `${e.pageX - 10}px`;
+            tooltip.style.top = `${e.pageY - 10}px`;
+        });
+
+        // Прячем тултип, когда убираем мышь
+        element.addEventListener("mouseleave", () => {
+            tooltip.style.display = "none";
+        });
+
+        // Обновляем позицию тултипа при движении мыши
+        element.addEventListener("mousemove", (e) => {
+            tooltip.style.left = `${e.pageX - 10}px`;
+            tooltip.style.top = `${e.pageY - 10}px`;
+        });
+    });
 }
 
 function updateFolders() {
@@ -95,31 +126,31 @@ function createFolderWrapper(folder, folderIndex, folders) {
         event.preventDefault();
         const draggedFolderIndex = event.dataTransfer.getData("folderIndex");
         const draggedType = event.dataTransfer.getData("type");
-    
+
         if (draggedType === "folder" && draggedFolderIndex !== folderIndex.toString()) {
             const draggedFolder = folders.splice(draggedFolderIndex, 1)[0];
             folders.splice(folderIndex, 0, draggedFolder);
-    
+
             chrome.storage.local.get("folders", ({ folders: storedFolders }) => {
                 const folderStates = {};
-    
+
                 if (storedFolders) {
                     storedFolders.forEach((folder) => {
                         folderStates[folder.id] = folder.isOpen;
                     });
                 }
-    
+
                 folders.forEach((folder) => {
                     if (folderStates[folder.id] !== undefined) {
                         folder.isOpen = folderStates[folder.id];
                     }
                 });
-    
+
                 chrome.storage.local.set({ folders }, updateFolders);
             });
         }
     });
-    
+
 
     const folderIcon = document.createElement("img");
     folderIcon.classList.add("tree-item-icon");
@@ -140,37 +171,44 @@ function createFolderWrapper(folder, folderIndex, folders) {
     toolsContainer.appendChild(createButton(
         "https://img.icons8.com/material/18/FFFFFF/export.png",
         "export",
-        () => handleExportFolder(folderIndex)
+        () => handleExportFolder(folderIndex),
+        "Экспорт"
     ));
     toolsContainer.appendChild(createButton(
         "https://img.icons8.com/material/18/FFFFFF/import.png",
         "import",
-        () => handleImportFolder(folderIndex)
+        () => handleImportFolder(folderIndex),
+        "Импорт"
     ));
     toolsContainer.appendChild(createButton(
         "https://img.icons8.com/material/18/FFFFFF/restore-page.png",
         "restore-page",
-        () => handleRestoreFolder(folderIndex)
+        () => handleRestoreFolder(folderIndex),
+        "Перезаписать"
     ));
     toolsContainer.appendChild(createButton(
         "https://img.icons8.com/material/18/FFFFFF/rename.png",
         "rename",
-        () => handleRenameFolder(folderIndex)
+        () => handleRenameFolder(folderIndex),
+        "Переименовать"
     ));
     toolsContainer.appendChild(createButton(
         "https://img.icons8.com/material/18/FFFFFF/broom.png",
         "broom",
-        () => handleClearFolder(folderIndex)
+        () => handleClearFolder(folderIndex),
+        "Очистить"
     ));
     toolsContainer.appendChild(createButton(
         "https://img.icons8.com/material/18/FFFFFF/delete-forever.png",
         "delete",
-        () => handleDeleteFolder(folderIndex)
+        () => handleDeleteFolder(folderIndex),
+        "Удалить"
     ));
     toolsContainer.appendChild(createButton(
         "https://img.icons8.com/material/18/FFFFFF/plus-math--v1.png",
         "add-link",
-        () => handleCreateLink(folderIndex)
+        () => handleCreateLink(folderIndex),
+        "Добавить"
     ));
 
     const linksContainer = document.createElement("div");
@@ -216,11 +254,11 @@ function createLinkWrapper(title, url, folderIndex, index) {
     const actionsWrapper = document.createElement("div");
     actionsWrapper.classList.add("tree-item-tools");
 
-    actionsWrapper.appendChild(createButton("https://img.icons8.com/material/18/FFFFFF/share.png", "share", () => handleShareLink(url)));
-    actionsWrapper.appendChild(createButton("https://img.icons8.com/material/18/FFFFFF/rename.png", "rename", () => handleRenameLink(folderIndex, index)));
-    actionsWrapper.appendChild(createButton("https://img.icons8.com/material/18/FFFFFF/replace.png", "replace", () => handleReplaceLink(folderIndex, index)));
-    actionsWrapper.appendChild(createButton("https://img.icons8.com/material/18/FFFFFF/delete-forever.png", "delete", () => handleDeleteLink(folderIndex, index)));
-    actionsWrapper.appendChild(createButton("https://img.icons8.com/material/18/FFFFFF/external-link.png", "external-link", () => handleOpenExternalLink(url)));
+    actionsWrapper.appendChild(createButton("https://img.icons8.com/material/18/FFFFFF/share.png", "share", () => handleShareLink(url), "Поделиться"));
+    actionsWrapper.appendChild(createButton("https://img.icons8.com/material/18/FFFFFF/rename.png", "rename", () => handleRenameLink(folderIndex, index), "Переименовать"));
+    actionsWrapper.appendChild(createButton("https://img.icons8.com/material/18/FFFFFF/replace.png", "replace", () => handleReplaceLink(folderIndex, index), "Перезаписать"));
+    actionsWrapper.appendChild(createButton("https://img.icons8.com/material/18/FFFFFF/delete-forever.png", "delete", () => handleDeleteLink(folderIndex, index), "Удалить"));
+    actionsWrapper.appendChild(createButton("https://img.icons8.com/material/18/FFFFFF/external-link.png", "external-link", () => handleOpenExternalLink(url), "Новая вкладка"));
 
     linkWrapper.addEventListener("dragstart", (event) => {
         event.dataTransfer.setData("draggedLinkIndex", index);
@@ -273,9 +311,10 @@ function createLinkWrapper(title, url, folderIndex, index) {
     return linkWrapper;
 }
 
-function createButton(src, alt, handler) {
+function createButton(src, alt, handler, tooltip) {
     const button = document.createElement("button");
     button.classList.add("cp-icon-opacity");
+    if (tooltip != undefined) button.setAttribute("data-tooltip", tooltip);
 
     const img = document.createElement("img");
     img.src = src;

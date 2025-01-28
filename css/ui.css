@@ -99,3 +99,54 @@
     color: #e9cf9f;
     text-decoration: none;
 }
+
+*[data-tooltip] {
+    position: relative;
+    z-index: 999;
+}
+
+*[data-tooltip]::after {
+    position: absolute;
+    content: attr(data-tooltip);
+    visibility: hidden;
+    opacity: 0;
+    z-index: 999;
+    /* display: none; */
+    pointer-events: none;
+
+    width: max-content;
+    max-width: 200px;
+    padding: 8px 13px;
+    bottom: calc(100% + 3px);
+    transform: translateX(-50%);
+    left: 50%;
+
+    background-color: var(--dark, #0e0e0e);
+    border: solid 1px var(--second);
+    color: #585858;
+
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+
+    /* transition: opacity .3s; */
+}
+
+*[data-tooltip]:hover::after,
+*[data-tooltip]:focus::after {
+    visibility: visible;
+    opacity: 1;
+    /* display: block; */
+}
+
+/* .custom-tooltip {
+  position: absolute;
+  background-color: black;
+  color: #a38b63;
+  padding: 5px 8px;
+  font-size: 13px;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 1000;
+  display: none;
+} */

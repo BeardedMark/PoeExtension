@@ -1,3 +1,93 @@
 body {
     min-width: 400px;
+    background-color: #141414;
+    color: #a38d6d;
+    font-size: 13px;
+    padding: 0;
+    margin: 0;
+}
+
+
+body > *:nth-child(odd) {
+    background-color: #1a1b18;
+    padding: 13px;
+}
+
+body > *:nth-child(even) {
+    background-color: #0f0f0f;
+    padding: 13px;
+}
+
+p{
+    padding: 0;
+    margin: 0;
+}
+
+nav{
+    display: flex;
+    gap: 13px;
+}
+
+button{
+    background: rgb(34, 34, 34);
+    border: 1px solid rgb(68, 68, 68);
+    padding: 5px 8px;
+    color: #a38d6d;
+    cursor: pointer;
+    user-select: none;
+}
+button:hover{
+    background: #090909;
+}
+
+a{
+    color: #dfcf99;
+    cursor: pointer;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+
+.poe-font-header {
+    color: #dfcf99;
+    padding: 0;
+    margin: 0;
+}
+
+.poe-font-text {
+    color: #a38d6d;
+}
+
+.poe-font-second {
+    color: #585858;
+}
+
+.poe-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    width: auto;
+}
+.poe-checkbox input {
+    cursor: pointer;
+    accent-color: #585858;
+    width: auto;
+}
+
+details summary {
+    user-select: none;
+    cursor: pointer;
+}
+
+details>*:not(:first-child) {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.settings-tree{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }

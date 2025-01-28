@@ -6,84 +6,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Popup</title>
     <link rel="stylesheet" href="../css/popup.css">
-    <!-- <link rel="stylesheet" href="../css/styles.css"> -->
-    <!-- <link rel="stylesheet" href="../css/ui.css"> -->
-    <link rel="stylesheet" href="https://custompoe.ru/css/reset.css">
-    <link rel="stylesheet" href="https://custompoe.ru/css/styles.css">
-    <link rel="stylesheet" href="https://custompoe.ru/css/styles/animation.css">
-    <link rel="stylesheet" href="https://custompoe.ru/css/styles/background.css">
-    <link rel="stylesheet" href="https://custompoe.ru/css/styles/border.css">
-    <link rel="stylesheet" href="https://custompoe.ru/css/styles/cursor.css">
-    <link rel="stylesheet" href="https://custompoe.ru/css/styles/display.css">
-    <link rel="stylesheet" href="https://custompoe.ru/css/styles/font.css">
-    <link rel="stylesheet" href="https://custompoe.ru/css/styles/margin.css">
-    <link rel="stylesheet" href="https://custompoe.ru/css/styles/overflow.css">
-    <link rel="stylesheet" href="https://custompoe.ru/css/styles/padding.css">
-    <link rel="stylesheet" href="https://custompoe.ru/css/styles/position.css">
-    <link rel="stylesheet" href="https://custompoe.ru/css/styles/root.css">
-    <link rel="stylesheet" href="https://custompoe.ru/css/styles/style.css">
-    <link rel="stylesheet" href="https://custompoe.ru/css/styles/template.css">
 </head>
 
-<body class="flex-col-21 pad-21">
-    <div class="flex-col-8">
-        <div>
-            <h1 class="font-size-lg font-color-accent">PoeExtension</h1>
-            <p class="font-color-second">Браузерное расширение для сайтов Path of Exile</p>
-        </div>
-        
-        <div class="flex-row-13">
-            <a href="https://custompoe.ru" class="decor-link" target="_blank" rel="noopener noreferrer">Сайт</a>
-            <a href="https://ru.pathofexile.com/forum/view-thread/3703253" class="decor-link" target="_blank" rel="noopener noreferrer">Форум</a>
-            <a href="https://github.com/BeardedMark/PoeExtension" class="decor-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-        
+<body>
+    <div>
+        <h1 class="poe-font-header">PoeExtension</h1>
+        <p>Браузерное расширение для сайтов Path of Exile</p>
     </div>
 
-    <details open>
-        <summary class="font-size-md font-color-accent cursor-pointer">Настройки</summary>
+    <nav>
+        <a href="https://custompoe.ru" class="decor-link" target="_blank" rel="noopener noreferrer">Сайт</a>
+        <a href="https://ru.pathofexile.com/forum/view-thread/3703253" class="decor-link" target="_blank"
+            rel="noopener noreferrer">Форум</a>
+        <a href="https://github.com/BeardedMark/PoeExtension" class="decor-link" target="_blank"
+            rel="noopener noreferrer">GitHub</a>
+    </nav>
 
-        <div class="flex-col-8 mar-t-8 pad-l-8">
-            <p class="font-size-sm font-color-second">Обновите страницу для применения настроек</p>
-            <label class="flex-row-5 flex-ai-center cursor-pointer temp-link" for="fixedHeader">
-                <input class="decor-checkbox checkbox-options" type="checkbox" id="fixedHeader" name="fixedHeader">
-                Зафиксировать поиск
-            </label>
+    <div class="settings-tree">
+        <details>
+            <summary>Настройки торговли</summary>
 
-            <label class="flex-row-5 flex-ai-center cursor-pointer temp-link" for="bookmarks">
-                <input class="decor-checkbox checkbox-options" type="checkbox" id="bookmarks" name="bookmarks">
-                Быстрые ссылки
-            </label>
+            <div>
+                <label class="poe-checkbox" for="bookmarks">
+                    <input class="checkbox-options" type="checkbox" id="bookmarks" name="bookmarks">
+                    Закладки фильтров
+                </label>
 
-            <label class="flex-row-5 flex-ai-center cursor-pointer temp-link" for="statmarker">
-                <input class="decor-checkbox checkbox-options" type="checkbox" id="statmarker" name="statmarker">
-                Подсветка свойств
-            </label>
+                <label class="poe-checkbox" for="statmarker">
+                    <input class="checkbox-options" type="checkbox" id="statmarker" name="statmarker">
+                    Подсветка искомых свойств
+                </label>
 
-            <label class="flex-row-5 flex-ai-center cursor-pointer temp-link" for="minHeader">
-                <input class="decor-checkbox checkbox-options" type="checkbox" id="minHeader" name="minHeader">
-                Компактная шапка
-            </label>
-        </div>
-    </details>
+                <label class="poe-checkbox" for="fixedHeader">
+                    <input class="checkbox-options" type="checkbox" id="fixedHeader" name="fixedHeader">
+                    Зафиксировать поиск
+                </label>
 
-
-    <details>
-        <summary class="font-size-md font-color-accent cursor-pointer">Данные расширения</summary>
-
-        <div class="flex-col-8 mar-t-8 pad-l-8">
-            <p class="font-size-sm font-color-second">Хранилище персональных значений и переменных</p>
-            <div class="flex-row-8 flex-jc-between">
-                <button id="exportStorage" class="decor-btn">Экспорт</button>
-                <button id="importStorage" class="decor-btn">Импорт</button>
-                <button id="clearStorage" class="decor-btn font-color-danger">Очистить</button>
-    
-                <input type="file" id="importFile" style="display: none;" accept=".json">
+                <label class="poe-checkbox" for="minHeader">
+                    <input class="checkbox-options" type="checkbox" id="minHeader" name="minHeader">
+                    Компактная шапка сайта
+                </label>
             </div>
+        </details>
 
+        <details>
+            <summary class="font-size-md font-color-accent cursor-pointer">Данные расширения</summary>
+
+            <div class="flex-col-8 mar-t-8 pad-l-8">
+                <p class="font-size-sm font-color-second">Хранилище персональных значений и переменных</p>
+                <div class="flex-row-8 flex-jc-between">
+                    <button id="exportStorage" class="decor-btn">Экспорт</button>
+                    <button id="importStorage" class="decor-btn">Импорт</button>
+                    <button id="clearStorage" class="decor-btn font-color-danger">Очистить</button>
+
+                    <input type="file" id="importFile" style="display: none;" accept=".json">
+                </div>
+
+            </div>
+        </details>
+    </div>
+
+        <div>
+            <p class="poe-font-second">Обновите страницу для применения настроек</p>
         </div>
-    </details>
-
     <script src="../js/popup.js"></script>
 </body>
 
