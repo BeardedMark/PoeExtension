@@ -82,7 +82,7 @@ function rearrangeDetailsElements() {
 // Стилизация и перемещение имени персонажа
 function styleCharacterNames() {
     document.querySelectorAll(".details").forEach((element) => {
-        if(element.querySelector(".status-offline")) return;
+        if (element.querySelector(".status-offline")) return;
         const characterNameElement = element.querySelector(".character-name");
         const btns = element.querySelector(".info");
         const isUpdate = characterNameElement.getAttribute("data-is-update");
@@ -186,6 +186,78 @@ function styleMatchingElements() {
     contentContainer.querySelectorAll("span").forEach(span => {
         if (searchRegexes.some(regex => regex.test(span.textContent))) {
             span.style.color = "rgb(67, 165, 103)";
+        }
+    });
+
+}
+
+function applyShadowToImage() {
+    document.querySelectorAll('[data-id]').forEach(item => {
+        if (item.getAttribute("data-update") === "true") return;
+
+        const values = [];
+        const element = item.querySelector('.icon img');
+
+        // Собираем числовые значения из всех '.explicitMod'
+        item.querySelectorAll('.explicitMod').forEach(mod => {
+            const textContent = mod.textContent || "";
+            const matches = textContent.match(/≥\s*(\d+)\)/g);
+
+            if (matches) {
+                matches.forEach(match => {
+                    values.push(parseInt(match.match(/\d+/)[0], 10));
+                });
+            }
+        });
+
+        const minValue = Math.min(...values);
+        const maxValue = Math.max(...values);
+        const averageValue = Math.round(values.reduce((sum, val) => sum + val, 0) / values.length);
+
+        const mainSpan = document.createElement('span');
+        mainSpan.textContent = 'Уровень свойств: ';
+
+        const levelSpan = document.createElement('span');
+        levelSpan.classList.add('colourDefault');
+        levelSpan.textContent = minValue + "-" +  maxValue;
+        mainSpan.appendChild(levelSpan);
+        
+        const content = item.querySelector(".content");
+        const iLvl = content.querySelector(".itemLevel");
+        content.insertBefore(mainSpan, iLvl);
+
+        // Определяем цвет тени на основе минимального значения
+        const shadowColor =
+        averageValue >= 80 ? '#af6025' :
+        averageValue >= 75 ? '#b9a744' :
+        averageValue >= 60 ? '#88f' :
+                        'transparent';
+
+        // Применяем тень и помечаем элемент как обновлённый
+        element.style.filter = `drop-shadow(0px 0px 21px ${shadowColor})`;
+        item.setAttribute("data-update", "true");
+    });
+}
+
+
+
+function setStatRarity() {
+    const tiers = [
+        { threshold: 80, color: "#af6025" },
+        { threshold: 75, color: "#b9a744" },
+        { threshold: 60, color: "#88f" },
+        { threshold: 1, color: "#b5b5b5" }
+    ];
+
+    document.querySelectorAll('.explicitMod').forEach(mod => {
+        const textContent = mod.textContent || "";
+        const matches = textContent.match(/≥\s*(\d+)\)/g);
+
+        if (matches) {
+            const values = matches.map(match => parseInt(match.match(/\d+/)[0], 10));
+
+            const tier = tiers.find(tier => values.every(value => value >= tier.threshold));
+            if (tier) mod.style.color = tier.color;
         }
     });
 }

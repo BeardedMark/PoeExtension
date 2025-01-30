@@ -89,7 +89,7 @@ function updateFolders() {
 }
 
 // Interface
-
+let dragData = null;
 function createFolderWrapper(folder, folderIndex, folders) {
     const folderElement = document.createElement("div");
     folderElement.classList.add("tree-folder");
@@ -102,13 +102,17 @@ function createFolderWrapper(folder, folderIndex, folders) {
         event.dataTransfer.setData("folderIndex", folderIndex);
         event.dataTransfer.setData("type", "folder");
         folderElement.classList.add("dragstart");
+
+        dragData = { folderIndex, type: "folder" };
     });
 
     folderHeader.addEventListener("dragover", (event) => {
         event.preventDefault();
-        if (event.dataTransfer.getData("type") === "folder") {
+
+        // if (event.dataTransfer.getData("type") === "folder") {
+        //     folderElement.classList.add("dragover");
+        // }
             folderElement.classList.add("dragover");
-        }
     });
 
     folderHeader.addEventListener("dragleave", (event) => {
@@ -126,6 +130,8 @@ function createFolderWrapper(folder, folderIndex, folders) {
         event.preventDefault();
         const draggedFolderIndex = event.dataTransfer.getData("folderIndex");
         const draggedType = event.dataTransfer.getData("type");
+
+        dragData = null;
 
         if (draggedType === "folder" && draggedFolderIndex !== folderIndex.toString()) {
             const draggedFolder = folders.splice(draggedFolderIndex, 1)[0];

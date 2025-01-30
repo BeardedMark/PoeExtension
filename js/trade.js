@@ -14,26 +14,29 @@ window.addEventListener("load", () => {
     updateLanguageSelectLinks();
 
     const observerTarget = document.body;
-    
+
     if (observerTarget) {
         const observer = new MutationObserver(() => {
             observer.disconnect();
-            chrome.storage.sync.get("statmarker", (settings) => {
-                if (settings.statmarker) {
-                    styleMatchingElements();
-                    setUiIcons();
-                    transformPriceElement();
-                    hideVerifiedStatus();
-                    // updateDetailsStatusColors();
-                    rearrangeDetailsElements();
-                    styleCharacterNames();
-                    styleInfoElements();
-                    removeItemNotes();
-                    setStyleButtons();
-                    replaceButtonIcons();
-                    createClaenStatButton();
-                }
+            checkAndRun("statmarker", styleMatchingElements);
+            checkAndRun("cleanStat", createClaenStatButton);
+            checkAndRun("charName", styleCharacterNames);
+            checkAndRun("profileName", rearrangeDetailsElements);
+            checkAndRun("propIcons", setUiIcons);
+            checkAndRun("iconButton", replaceButtonIcons);
+            checkAndRun("statRarity", () => {
+                setStatRarity();
+                applyShadowToImage();
             });
+            checkAndRun("updateUi", () => {
+                hideVerifiedStatus();
+                removeItemNotes();
+                transformPriceElement();
+                styleInfoElements();
+                setStyleButtons();
+            });
+
+            // updateDetailsStatusColors();
             observer.observe(observerTarget, { childList: true, subtree: true });
         });
         observer.observe(observerTarget, { childList: true, subtree: true });

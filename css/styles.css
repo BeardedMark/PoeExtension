@@ -278,6 +278,8 @@
 
 .dragstart{
     opacity: .3;
+    user-select: none;
+    outline: 1px solid red;
 }
 
 .dragover{
